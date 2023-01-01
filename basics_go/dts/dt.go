@@ -9,12 +9,12 @@ func RunDts() {
 	showTheUsageOfEnums()
 }
 
-//Simple function with return type bool
+// Simple function with return type bool
 func findMePrime(num int) bool {
 	return num%2 == 1
 }
 
-//Simple for-loop.
+// Simple for-loop.
 func printTableForOf(n int) {
 	for i := 1; i <= 10; i++ {
 		fmt.Printf("%v x %d = %v\n", n, i, n*i)
@@ -32,7 +32,7 @@ const (
 )
 
 func showTheUsageOfEnums() {
-	fmt.Println(Red)
+	fmt.Println(Red.String())
 }
 
 // Function on Color
