@@ -7,6 +7,10 @@ func RunDts() {
 	fmt.Printf("Is %v Prime ->  %v\n", enteredNumber, findMePrime(enteredNumber))
 	printTableForOf(121)
 	showTheUsageOfEnums()
+	fmt.Println("Random Number - ", generateRandomNumber())
+	fmt.Println("Value of Pi - ", showValueOfPi())
+	a, b := swapValues("Kumar", "ajay")
+	fmt.Println("Swapped values: ", a, b)
 }
 
 // Simple function with return type bool
@@ -32,7 +36,7 @@ const (
 )
 
 func showTheUsageOfEnums() {
-	fmt.Println(Red.String())
+	fmt.Println(Violet.EnumIndex())
 }
 
 // Function on Color
@@ -47,4 +51,9 @@ func (c Color) String() string {
 	default:
 		return "NO_COLOR"
 	}
+}
+
+func (c Color) EnumIndex() int {
+	return int(c)
+
 }
