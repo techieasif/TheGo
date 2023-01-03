@@ -11,6 +11,7 @@ func RunDts() {
 	fmt.Println("Value of Pi - ", showValueOfPi())
 	a, b := swapValues("Kumar", "ajay")
 	fmt.Println("Swapped values: ", a, b)
+	showDefaults()
 }
 
 // Simple function with return type bool
