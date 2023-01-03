@@ -12,6 +12,8 @@ func RunDts() {
 	a, b := swapValues("Kumar", "ajay")
 	fmt.Println("Swapped values: ", a, b)
 	showDefaults()
+	showInitializedValues()
+	showTypeConversion()
 }
 
 // Simple function with return type bool
@@ -57,4 +59,11 @@ func (c Color) String() string {
 func (c Color) EnumIndex() int {
 	return int(c)
 
+}
+
+func showTypeConversion() {
+	var age = 24
+	var ageFloat = float64(age)
+	var ageUInt = uint(ageFloat)
+	fmt.Println(age, ageFloat, ageUInt)
 }
