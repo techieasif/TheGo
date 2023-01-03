@@ -1,7 +1,10 @@
 package main
 
-import "techieasif.com/basics_go/dts"
+import (
+	"techieasif.com/basics_go/theLoop"
+)
 
 func main() {
-	dts.RunDts()
+	//dts.RunDts()
+	theLoop.RunTheLoop()
 }
