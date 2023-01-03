@@ -5,6 +5,7 @@ import "fmt"
 func RunTheLoop() {
 	simple4Loop(2345678)
 	shortHand4Loop(2345678)
+	whileLoop(2345678)
 }
 
 func simple4Loop(number int) {
@@ -17,9 +18,17 @@ func simple4Loop(number int) {
 
 func shortHand4Loop(number int) {
 	sum := 1
-
+	///for ; sum < number ;
 	for sum < number {
 		sum += sum
 	}
 	fmt.Println("THE short sum :-> ", sum)
+}
+
+func whileLoop(number int) {
+	sum := 1
+	for sum < number {
+		sum += sum
+	}
+	fmt.Println("THE while sum :-> ", sum)
 }
