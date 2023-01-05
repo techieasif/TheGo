@@ -1,10 +1,11 @@
 package main
 
 import (
-	"techieasif.com/basics_go/theLoop"
+	theinterface "techieasif.com/basics_go/theInterface"
 )
 
 func main() {
 	//dts.RunDts()
-	theLoop.RunTheLoop()
+	// theLoop.RunTheLoop()
+	theinterface.ShoeEmployeeDetails()
 }
