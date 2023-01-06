@@ -1,11 +1,18 @@
 package theLoop
 
-import "fmt"
+import (
+	"fmt"
+	theinterface "techieasif.com/basics_go/theInterface"
+)
 
 func RunTheLoop() {
 	simple4Loop(2345678)
 	shortHand4Loop(2345678)
 	whileLoop(2345678)
+	dog := theinterface.Dog{
+		Name: "Joru",
+	}
+	theinterface.ShowAnimals(&dog)
 }
 
 func simple4Loop(number int) {
