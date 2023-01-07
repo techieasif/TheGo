@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"techieasif.com/basics_go/theLoop"
 
-	"github.com/samber/lo"
 	theinterface "techieasif.com/basics_go/theInterface"
 )
 
 func main() {
 	//dts.RunDts()
-	// theLoop.RunTheLoop()
-	theinterface.ShoeEmployeeDetails()
-	names := lo.Uniq([]string{"Samuel", "John", "Samuel", "john"})
-	fmt.Println(names)
+	theLoop.RunTheLoop()
+	theinterface.ShowEmployeeDetails()
+	//names := lo.Uniq([]string{"Samuel", "John", "Samuel", "john"})
+	//fmt.Println(names)
 }

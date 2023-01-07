@@ -17,16 +17,13 @@ type Dog struct {
 }
 
 func (d *Dog) Speaks() string {
-	//TODO implement me
-	panic("implement me")
+	return "Bark bark"
 }
 
 func (d *Dog) hasLegs() int {
-	//TODO implement me
-	panic("implement me")
+	return 4
 }
 
 func (d *Dog) color() string {
-	//TODO implement me
-	panic("implement me")
+	return "brown"
 }
