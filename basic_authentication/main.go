@@ -11,9 +11,9 @@ import (
 func main() {
 	router := mux.NewRouter()
 
-	router.Handle("/api/demo/demo1", basicauthmiddleware.BasicAuthMiddleware(demoapi.Demo1API)).Methods("GET")
+	router.Handle("/api/demo/demo1", basicauthmiddleware.BasicAuthMiddleware(demoapi.Route1)).Methods("GET")
 
-	router.HandleFunc("/api/demo/demo2", demoapi.Demo2API).Methods("GET")
+	router.HandleFunc("/api/demo/demo2", demoapi.Route2).Methods("GET")
 
 	err := http.ListenAndServe(":3000", router)
 	if err != nil {

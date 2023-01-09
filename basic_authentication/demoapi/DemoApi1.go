@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func Demo1API(response http.ResponseWriter, request *http.Request) {
+func Route1(response http.ResponseWriter, request *http.Request) {
 	fmt.Fprint(response, "Demo 1 API")
 
 }
