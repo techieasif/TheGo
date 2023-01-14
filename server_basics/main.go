@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", handleHome)
+	fileHandler := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fileHandler)
+	http.HandleFunc("/dashboard", handleHome)
 	http.HandleFunc("/contact-us", contactUS)
 	_ = http.ListenAndServe(":8080", nil)
 }
@@ -17,6 +19,8 @@ func handleHome(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "home.page.tmpl")
 
 }
+
+
 
 func contactUS(w http.ResponseWriter, r *http.Request) {
 	_, err := fmt.Fprintf(w, "You can't contact us says chhota don")
