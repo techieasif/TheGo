@@ -7,11 +7,11 @@ import (
 
 func main() {
 	intChan := make(chan int)
-
 	go getValThroughChannel(intChan)
 	log.Print(<-intChan)
 }
 
 func getValThroughChannel(intChan chan int) {
 	intChan <- chans_helper.RandomNumberGenerator(100)
+	defer close(intChan)
 }
