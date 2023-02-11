@@ -1,15 +1,16 @@
-package main
+package handlers
 
 import (
+	"github.com/techieasif/TheGo/bookings/pkg/render"
 	"net/http"
 )
 
 // Home is the handler for the home page
 func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "home.page.tmpl")
+	render.ParseTemplate(w, "home.page.tmpl")
 }
 
 // About is the handler for the about page
 func About(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "about.page.tmpl")
+	render.ParseTemplate(w, "about.page.tmpl")
 }
