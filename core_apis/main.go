@@ -2,9 +2,15 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
-	fmt.Println("ENVIRONMENT::", os.Getpagesize())
+	f := func() {
+		fmt.Println("Pause for a moment %T")
+	}
+	f()
+}
+
+func advFn(arg int) {
+	fmt.Println("Inside advance function", arg)
 }
