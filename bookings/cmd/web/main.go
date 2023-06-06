@@ -1,31 +1,30 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
-	"github.com/techieasif/TheGo/bookings/pkg/config"
-	"github.com/techieasif/TheGo/bookings/pkg/handlers"
-	"github.com/techieasif/TheGo/bookings/pkg/render"
+	"github.com/alexedwards/scs/v2"
+	"github.com/techieasif/TheGo/bookings/internal/config"
+	"github.com/techieasif/TheGo/bookings/internal/handlers"
+	"github.com/techieasif/TheGo/bookings/internal/render"
+	"github.com/techieasif/TheGo/bookings/models"
 	"log"
 	"net/http"
+	"time"
 )
 
 const portNumber = ":8080"
 
+var app config.AppConfig
+
+var session *scs.SessionManager
+
 // main is the main function
 func main() {
-	var app config.AppConfig
-
-	tc, err := render.CreateTemplateCacheV2()
-
+	err := run()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
-	app.TemplateCache = tc
-	app.UseCache = false
-	render.NewTemplates(&app)
-	repo := handlers.NewRepo(&app)
-
-	handlers.NewHandlers(repo)
 
 	srv := &http.Server{
 		Addr:    portNumber,
@@ -34,12 +33,36 @@ func main() {
 
 	err = srv.ListenAndServe()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
+
 	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
+}
 
-	//http.HandleFunc("/", handlers.Repo.Home)
-	//http.HandleFunc("/about", handlers.Repo.About)
+func run() error {
+	//What I am going to put in session
+	gob.Register(models.Reservation{})
 
-	//_ = http.ListenAndServe(portNumber, nil)
+	app.InProduction = false
+	session = scs.New()
+
+	//24 hour session
+	session.Lifetime = 24 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = app.InProduction
+
+	app.Session = session
+
+	tc, err := render.CreateTemplateCacheV2()
+
+	if err != nil {
+		return err
+	}
+	app.TemplateCache = tc
+	app.UseCache = false
+	repo := handlers.NewRepo(&app)
+	handlers.NewHandlers(repo)
+	render.NewTemplates(&app)
+	return nil
 }

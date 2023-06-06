@@ -1,5 +1,8 @@
 package models
 
+import "github.com/techieasif/TheGo/bookings/internal/forms"
+
+//TemplateData is the data passed to every page and is available to use in templates.
 type TemplateData struct {
 	StringMap map[string]string
 	IntMap    map[string]int
@@ -9,4 +12,5 @@ type TemplateData struct {
 	Flash     string
 	Warning   string
 	Error     string
+	Form      *forms.Form
 }
